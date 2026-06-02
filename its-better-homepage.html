@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>It's Better — Smooth Truffle Chocolate | House of Care Nutrition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#C0142B;
+    --red-deep:#8E0E20;
+    --cocoa:#2B1410;
+    --cocoa-soft:#3E2218;
+    --cream:#FBF4E9;
+    --cream-2:#F3E7D3;
+    --gold:#C49A45;
+    --gold-soft:#E0C684;
+    --ink:#24130E;
+    --paper:#FFFCF6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Hanken Grotesk',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* grain overlay */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:400;line-height:1.02;letter-spacing:-.01em}
+  .eyebrow{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;font-weight:600}
+  .container{max-width:1240px;margin:0 auto;padding:0 32px}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 40px;transition:.4s;
+    mix-blend-mode:normal;
+  }
+  header.scrolled{background:rgba(43,20,16,.92);backdrop-filter:blur(10px);padding:14px 40px;box-shadow:0 1px 0 rgba(196,154,69,.25)}
+  .brand{display:flex;flex-direction:column;line-height:1;color:var(--cream)}
+  .brand .name{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+  .brand .name b{color:var(--gold-soft);font-weight:600}
+  .brand .house{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-soft);margin-top:3px;opacity:.85}
+  nav{display:flex;gap:34px}
+  nav a{color:var(--cream);font-size:.82rem;letter-spacing:.04em;font-weight:500;position:relative;opacity:.92}
+  nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold-soft);transition:.35s}
+  nav a:hover::after{width:100%}
+  @media(max-width:880px){nav{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    background:
+      radial-gradient(120% 90% at 78% 18%, rgba(192,20,43,.16), transparent 55%),
+      radial-gradient(140% 120% at 12% 96%, rgba(196,154,69,.14), transparent 60%),
+      linear-gradient(160deg,var(--cocoa) 0%, #1c0d09 60%, var(--cocoa-soft) 100%);
+    color:var(--cream);overflow:hidden;
+  }
+  .hero .ring{
+    position:absolute;border:1px solid rgba(196,154,69,.18);border-radius:50%;
+  }
+  .ring.r1{width:680px;height:680px;right:-180px;top:-160px;animation:spin 60s linear infinite}
+  .ring.r2{width:440px;height:440px;right:-60px;top:-40px;border-style:dashed;animation:spin 90s linear infinite reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;width:100%;position:relative;z-index:2}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:8px}}
+  .hero .eyebrow{color:var(--gold-soft);opacity:0;animation:rise .9s .2s forwards}
+  .hero h1{font-size:clamp(3.4rem,9vw,7.2rem);margin:18px 0 10px;font-weight:300}
+  .hero h1 .em{font-style:italic;font-weight:500;color:var(--gold-soft)}
+  .hero h1 .word{display:inline-block;opacity:0;transform:translateY(40px);animation:rise .9s forwards}
+  .hero h1 .word:nth-child(1){animation-delay:.35s}
+  .hero h1 .word:nth-child(2){animation-delay:.5s}
+  .hero .sub{font-size:1.12rem;max-width:430px;color:rgba(251,244,233,.82);font-weight:300;opacity:0;animation:rise .9s .75s forwards}
+  .hero .cta-row{margin-top:36px;display:flex;gap:18px;align-items:center;opacity:0;animation:rise .9s .9s forwards;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:40px;font-weight:600;font-size:.9rem;letter-spacing:.02em;transition:.35s}
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 30px -8px rgba(192,20,43,.6)}
+  .btn-primary:hover{background:#fff;color:var(--red);transform:translateY(-3px)}
+  .btn-ghost{border:1px solid rgba(224,198,132,.45);color:var(--gold-soft)}
+  .btn-ghost:hover{background:rgba(224,198,132,.12);border-color:var(--gold-soft)}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+  /* hero product medallion */
+  .medallion{position:relative;display:flex;align-items:center;justify-content:center;opacity:0;animation:rise 1.1s .6s forwards}
+  .medallion .disc{
+    width:min(420px,80vw);aspect-ratio:1;border-radius:50%;
+    background:
+      radial-gradient(circle at 38% 32%, #7a3a22, #3a1c12 62%, #1c0d09);
+    box-shadow:inset 0 0 60px rgba(0,0,0,.6), 0 40px 80px -20px rgba(0,0,0,.7);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    border:1px solid rgba(196,154,69,.35);position:relative;
+  }
+  .medallion .disc::before{
+    content:"";position:absolute;inset:16px;border:1px solid rgba(224,198,132,.25);border-radius:50%;
+  }
+  .medallion .badge-text{text-align:center;color:var(--gold-soft);padding:30px}
+  .medallion .badge-text .big{font-family:'Fraunces',serif;font-size:2.6rem;font-style:italic;color:#fff;line-height:.95}
+  .medallion .badge-text .small{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;margin-top:12px}
+  .medallion .float-chip{
+    position:absolute;background:var(--cream);color:var(--cocoa);border-radius:30px;
+    padding:9px 16px;font-size:.74rem;font-weight:700;letter-spacing:.04em;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);
+  }
+  .chip-1{top:8%;left:-6%;animation:bob 4s ease-in-out infinite}
+  .chip-2{bottom:14%;right:-8%;background:var(--red);color:#fff;animation:bob 4.6s ease-in-out infinite .6s}
+  .chip-3{bottom:-3%;left:18%;animation:bob 5s ease-in-out infinite 1.1s}
+  @keyframes bob{50%{transform:translateY(-12px)}}
+
+  /* ---------- CLAIM STRIP ---------- */
+  .claim{background:var(--red);color:#fff;overflow:hidden;border-top:1px solid var(--gold)}
+  .marquee{display:flex;gap:60px;white-space:nowrap;padding:18px 0;animation:scroll 26s linear infinite;font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem}
+  .marquee span{display:inline-flex;align-items:center;gap:60px}
+  .marquee .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-soft)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- SECTION BASE ---------- */
+  section{position:relative}
+  .pad{padding:120px 0}
+  .reveal{opacity:0;transform:translateY(34px);transition:.9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .sec-head{max-width:640px;margin-bottom:60px}
+  .sec-head .eyebrow{color:var(--red)}
+  .sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-top:16px;color:var(--cocoa)}
+  .sec-head p{margin-top:18px;font-size:1.08rem;color:#5c4a40}
+
+  /* ---------- STORY / TIMELINE ---------- */
+  .story{background:var(--paper)}
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px}
+  @media(max-width:880px){.timeline{grid-template-columns:1fr 1fr}}
+  .t-item{padding:34px 26px;border-left:1px solid rgba(196,154,69,.4);position:relative}
+  .t-item:first-child{border-left:none}
+  .t-item .yr{font-family:'Fraunces',serif;font-style:italic;font-size:2rem;color:var(--red)}
+  .t-item .dot{width:12px;height:12px;border-radius:50%;background:var(--gold);margin:14px 0;box-shadow:0 0 0 5px rgba(196,154,69,.18)}
+  .t-item h4{font-size:1.05rem;color:var(--cocoa);margin-bottom:6px;font-weight:700;font-family:'Hanken Grotesk',sans-serif}
+  .t-item p{font-size:.92rem;color:#6b574c}
+
+  /* ---------- PRODUCTS ---------- */
+  .products{background:linear-gradient(180deg,var(--cream),var(--cream-2))}
+  .prod-rail{display:flex;gap:24px;overflow-x:auto;padding:10px 4px 30px;scroll-snap-type:x mandatory}
+  .prod-rail::-webkit-scrollbar{height:6px}
+  .prod-rail::-webkit-scrollbar-thumb{background:var(--gold);border-radius:10px}
+  .card{
+    scroll-snap-align:start;min-width:300px;flex:0 0 300px;background:var(--paper);
+    border-radius:18px;overflow:hidden;cursor:pointer;transition:.4s;
+    border:1px solid rgba(196,154,69,.25);box-shadow:0 18px 40px -28px rgba(43,20,16,.4)
+  }
+  .card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -24px rgba(43,20,16,.5);border-color:var(--gold)}
+  .card .top{height:200px;display:flex;align-items:center;justify-content:center;position:relative}
+  .card .top .em{font-size:4.4rem;filter:drop-shadow(0 10px 16px rgba(0,0,0,.25))}
+  .card.c1 .top{background:radial-gradient(circle at 50% 40%,#6b2c1c,#2b1410)}
+  .card.c2 .top{background:radial-gradient(circle at 50% 40%,#9a3b2a,#3a1c12)}
+  .card.c3 .top{background:radial-gradient(circle at 50% 40%,#b5572f,#4a2516)}
+  .card.c4 .top{background:radial-gradient(circle at 50% 40%,#c0142b,#6c0f1c)}
+  .card .top .tag{position:absolute;top:14px;left:14px;background:rgba(251,244,233,.9);color:var(--cocoa);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:5px 10px;border-radius:20px}
+  .card .body{padding:22px}
+  .card .body h3{font-size:1.35rem;color:var(--cocoa)}
+  .card .body p{font-size:.9rem;color:#6b574c;margin:8px 0 16px}
+  .card .more{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);display:inline-flex;gap:7px;align-items:center}
+  .card:hover .more span{transform:translateX(5px)}
+  .card .more span{transition:.3s}
+
+  /* ---------- INGREDIENTS ---------- */
+  .ingredients{background:var(--cocoa);color:var(--cream)}
+  .ingredients .sec-head .eyebrow{color:var(--gold-soft)}
+  .ingredients .sec-head h2{color:var(--cream)}
+  .ingredients .sec-head p{color:rgba(251,244,233,.7)}
+  .ing-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+  @media(max-width:880px){.ing-wrap{grid-template-columns:1fr;gap:36px}}
+  .ing-list{display:flex;flex-wrap:wrap;gap:12px}
+  .ing-pill{
+    padding:13px 22px;border-radius:40px;border:1px solid rgba(224,198,132,.4);
+    cursor:pointer;font-weight:600;font-size:.92rem;transition:.3s;background:rgba(255,255,255,.03)
+  }
+  .ing-pill:hover{border-color:var(--gold-soft)}
+  .ing-pill.active{background:var(--gold);color:var(--cocoa);border-color:var(--gold)}
+  .ing-panel{
+    background:rgba(251,244,233,.05);border:1px solid rgba(224,198,132,.25);border-radius:22px;padding:40px;min-height:300px
+  }
+  .ing-panel .pn-em{font-size:3rem}
+  .ing-panel h3{font-size:2rem;color:var(--gold-soft);margin:14px 0 8px}
+  .ing-panel .lead{color:rgba(251,244,233,.82);font-size:1rem;margin-bottom:24px}
+  .nutri{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .nutri div{background:rgba(255,255,255,.04);border-radius:12px;padding:14px 16px;border:1px solid rgba(224,198,132,.15)}
+  .nutri div .n{font-family:'Fraunces',serif;font-size:1.5rem;color:#fff}
+  .nutri div .l{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft);margin-top:2px}
+
+  /* ---------- EMBLEM ---------- */
+  .emblem{background:var(--paper);overflow:hidden}
+  .em-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  @media(max-width:880px){.em-wrap{grid-template-columns:1fr}}
+  .em-art{display:flex;align-items:center;justify-content:center;position:relative}
+  .em-art .halo{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(196,154,69,.18),transparent 70%)}
+  .em-art svg{width:min(420px,82%);height:auto;position:relative}
+  .em-art svg path,.em-art svg circle,.em-art svg line{
+    stroke:var(--cocoa);fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:1400;stroke-dashoffset:1400;
+  }
+  .em-art.draw svg path,.em-art.draw svg circle,.em-art.draw svg line{animation:draw 2.6s ease forwards}
+  .em-art.draw svg .baby *{animation-delay:1s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .em-text .eyebrow{color:var(--red)}
+  .em-text h2{font-size:clamp(2.2rem,5vw,3.4rem);color:var(--cocoa);margin:16px 0 20px}
+  .em-text p{font-size:1.08rem;color:#5c4a40;margin-bottom:16px}
+  .em-text .sig{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--red);margin-top:10px}
+
+  /* ---------- CTA BAND ---------- */
+  .band{background:var(--red);color:#fff;text-align:center}
+  .band h2{font-size:clamp(2.2rem,6vw,4rem);font-weight:300}
+  .band h2 .em{font-style:italic;color:var(--gold-soft);font-weight:500}
+  .band p{max-width:520px;margin:18px auto 34px;color:rgba(255,255,255,.85)}
+  .band .btn-primary{background:#fff;color:var(--red)}
+  .band .btn-primary:hover{background:var(--cocoa);color:#fff}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--cocoa);color:var(--cream);padding:80px 0 40px}
+  .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+  @media(max-width:880px){.f-grid{grid-template-columns:1fr 1fr}}
+  footer .brand .name{font-size:1.7rem}
+  footer .f-tag{color:rgba(251,244,233,.6);margin-top:16px;max-width:280px;font-size:.92rem}
+  .f-col h5{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px}
+  .f-col a{display:block;color:rgba(251,244,233,.78);font-size:.92rem;margin-bottom:11px;transition:.25s}
+  .f-col a:hover{color:var(--gold-soft);padding-left:5px}
+  .f-bottom{margin-top:60px;padding-top:24px;border-top:1px solid rgba(224,198,132,.2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:rgba(251,244,233,.5);font-size:.8rem}
+  .socials{display:flex;gap:14px}
+  .socials a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(224,198,132,.3);display:flex;align-items:center;justify-content:center;color:var(--gold-soft);font-size:.8rem;font-weight:700;transition:.3s}
+  .socials a:hover{background:var(--gold);color:var(--cocoa)}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="brand">
+    <span class="name">It's <b>Better</b></span>
+    <span class="house">House of Care Nutrition</span>
+  </div>
+  <nav>
+    <a href="#story">Our Story</a>
+    <a href="#products">Products</a>
+    <a href="#ingredients">Ingredients</a>
+    <a href="#emblem">The Emblem</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Smooth Truffle Chocolate</span>
+      <h1><span class="word">It's</span> <span class="word em">Better.</span></h1>
+      <p class="sub">Real almond. Real cashew. Quality cocoa. A premium truffle made for those who taste the difference — nothing artificial, nothing to hide.</p>
+      <div class="cta-row">
+        <a href="#products" class="btn btn-primary">Explore the Range <span>→</span></a>
+        <a href="#story" class="btn btn-ghost">Our Story</a>
+      </div>
+    </div>
+    <div class="medallion">
+      <div class="disc">
+        <div class="badge-text">
+          <div class="big">It's<br>Better</div>
+          <div class="small">Truffle Chocolate</div>
+        </div>
+      </div>
+      <div class="float-chip chip-1">10 Vitamins &amp; Minerals</div>
+      <div class="float-chip chip-2">No Artificial Flavour</div>
+      <div class="float-chip chip-3">7 Quality Ingredients</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLAIM STRIP -->
+<div class="claim">
+  <div class="marquee">
+    <span>Real Almond <i class="dot"></i> Real Cashew <i class="dot"></i> Quality Cocoa <i class="dot"></i> Nothing Artificial <i class="dot"></i> It's Better <i class="dot"></i></span>
+    <span>Real Almond <i class="dot"></i> Real Cashew <i class="dot"></i> Quality Cocoa <i class="dot"></i> Nothing Artificial <i class="dot"></i> It's Better <i class="dot"></i></span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story pad" id="story">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Story</span>
+      <h2>Built on care, year after year.</h2>
+      <p>It's Better is the premium expression of Care Nutrition — a house that has spent years putting real nutrition into everyday joy. This is not a me-too brand. It's a quiet promise, perfected.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="t-item">
+        <div class="yr">2017</div>
+        <div class="dot"></div>
+        <h4>The mission begins</h4>
+        <p>Care Nutrition starts its fight against malnutrition in Bangladesh, partnering with global nutrition bodies.</p>
+      </div>
+      <div class="t-item">
+        <div class="yr">2020</div>
+        <div class="dot"></div>
+        <h4>Brands people trust</h4>
+        <p>Nutri Plus and Hashi Kushi grow into household names — healthier choices for every family.</p>
+      </div>
+      <div class="t-item">
+        <div class="yr">2026</div>
+        <div class="dot"></div>
+        <h4>Something better</h4>
+        <p>A premium line is born for a discerning, niche audience who want world-class taste with real ingredients.</p>
+      </div>
+      <div class="t-item">
+        <div class="yr">Soon</div>
+        <div class="dot"></div>
+        <h4>It's Better arrives</h4>
+        <p>Launching with smooth truffle chocolate — and a portfolio that grows, one honest product at a time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products pad" id="products">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Portfolio</span>
+      <h2>One brand. Many ways to taste better.</h2>
+      <p>Every product carries the same standard. Tap a category to explore flavours, ingredients and nutritional detail.</p>
+    </div>
+    <div class="prod-rail reveal">
+      <div class="card c1">
+        <div class="top"><span class="em">🍫</span><span class="tag">Hero</span></div>
+        <div class="body"><h3>Truffle Chocolate</h3><p>Smooth, slow-melt truffle with real almond and cashew at its heart.</p><span class="more">View flavours <span>→</span></span></div>
+      </div>
+      <div class="card c2">
+        <div class="top"><span class="em">🥄</span></div>
+        <div class="body"><h3>Chocolate Spread</h3><p>A rich cocoa spread that turns breakfast into a small celebration.</p><span class="more">View flavours <span>→</span></span></div>
+      </div>
+      <div class="card c3">
+        <div class="top"><span class="em">🍞</span></div>
+        <div class="body"><h3>Bread Spread</h3><p>Wholesome, nutty and indulgent — made to be loved every morning.</p><span class="more">View flavours <span>→</span></span></div>
+      </div>
+      <div class="card c4">
+        <div class="top"><span class="em">🥤</span></div>
+        <div class="body"><h3>Soft Drink Powder</h3><p>Juicy Plus — refreshing flavour fortified with vitamins and minerals.</p><span class="more">View flavours <span>→</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredients pad" id="ingredients">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">7 Quality Ingredients</span>
+      <h2>Tap an ingredient. See what's really inside.</h2>
+      <p>We don't hide behind flavours. Each ingredient earns its place — and we'll show you exactly why.</p>
+    </div>
+    <div class="ing-wrap reveal">
+      <div class="ing-list" id="ingList">
+        <div class="ing-pill active" data-i="0">Almond</div>
+        <div class="ing-pill" data-i="1">Cashew</div>
+        <div class="ing-pill" data-i="2">Cocoa</div>
+        <div class="ing-pill" data-i="3">Milk Solids</div>
+        <div class="ing-pill" data-i="4">Hazelnut</div>
+        <div class="ing-pill" data-i="5">Honey</div>
+        <div class="ing-pill" data-i="6">Sea Salt</div>
+      </div>
+      <div class="ing-panel" id="ingPanel"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EMBLEM -->
+<section class="emblem pad" id="emblem">
+  <div class="container em-wrap">
+    <div class="em-art reveal" id="emArt">
+      <div class="halo"></div>
+      <svg viewBox="0 0 400 320" aria-label="Mother and child elephant emblem">
+        <!-- Mother elephant -->
+        <g class="mother">
+          <path d="M70 230 Q60 150 130 120 Q210 92 270 130 Q300 150 300 200 Q300 235 280 250"/>
+          <path d="M130 250 L130 295 M175 255 L175 298 M235 255 L235 298 M278 248 L286 292"/>
+          <path d="M120 175 Q95 200 100 240 Q103 268 122 270"/>
+          <path d="M105 200 Q92 215 96 245"/>
+          <circle cx="150" cy="158" r="6"/>
+          <path d="M270 135 Q300 120 305 95"/>
+        </g>
+        <!-- Baby elephant -->
+        <g class="baby">
+          <path d="M210 250 Q205 210 245 196 Q295 180 322 205 Q338 220 332 250 Q330 262 318 268"/>
+          <path d="M245 268 L245 300 M278 270 L278 302 M312 266 L318 300"/>
+          <path d="M238 222 Q222 238 226 262 Q228 278 240 278"/>
+          <circle cx="262" cy="214" r="4.5"/>
+          <path d="M322 208 Q340 198 342 182"/>
+        </g>
+      </svg>
+    </div>
+    <div class="em-text">
+      <span class="eyebrow">The Emblem</span>
+      <h2>A mother and her child.</h2>
+      <p>At the heart of It's Better is an elephant and her calf — the oldest symbol of memory, gentleness and protection. It is our reminder of why this brand exists: care that you can taste.</p>
+      <p>You'll find them watching over every pack, every page, every promise we make.</p>
+      <div class="sig">Care, passed from one generation to the next.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band pad">
+  <div class="container reveal">
+    <h2>Taste the <span class="em">difference</span>.</h2>
+    <p>Premium truffle chocolate, launching soon. Be the first to know when It's Better arrives.</p>
+    <a href="#contact" class="btn btn-primary">Join the list <span>→</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <div class="brand">
+          <span class="name">It's <b style="color:var(--gold-soft)">Better</b></span>
+          <span class="house" style="color:var(--gold-soft)">House of Care Nutrition</span>
+        </div>
+        <p class="f-tag">A premium brand by Care Nutrition Limited — real ingredients, international standards, made in Bangladesh.</p>
+        <div class="socials" style="margin-top:24px">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Instagram">ig</a>
+          <a href="#" title="YouTube">yt</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Explore</h5>
+        <a href="#story">Our Story</a>
+        <a href="#products">Products</a>
+        <a href="#ingredients">Ingredients</a>
+        <a href="#emblem">The Emblem</a>
+      </div>
+      <div class="f-col">
+        <h5>Company</h5>
+        <a href="#">Care Nutrition Ltd.</a>
+        <a href="#">Nutri Plus</a>
+        <a href="#">Hashi Kushi</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="f-col">
+        <h5>Get in touch</h5>
+        <a href="#">care@carenutrition.com.bd</a>
+        <a href="#">+880 ____ ______</a>
+        <a href="#">Dhaka, Bangladesh</a>
+        <a href="#">Find a store</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Care Nutrition Limited. All rights reserved.</span>
+      <span>Privacy · Terms · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header scroll state
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40));
+
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.id==='emArt')e.target.classList.add('draw');io.unobserve(e.target)}})},{threshold:.18});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ingredient interaction
+  const data=[
+    {e:'🌰',name:'Almond',lead:'Whole roasted almonds — never almond "flavour". The crunch you feel is the real thing.',n:[['7g','Protein / 30g'],['Vit E','Antioxidant'],['Good fats','Heart-friendly'],['0','Artificial']]},
+    {e:'🥜',name:'Cashew',lead:'Creamy, buttery cashew that gives the truffle its signature smooth melt.',n:[['5g','Protein / 30g'],['Magnesium','Rich source'],['Iron','Naturally present'],['0','Preservatives']]},
+    {e:'🍫',name:'Cocoa',lead:'Quality cocoa sourced for depth and aroma — the soul of every It\'s Better truffle.',n:[['Flavanols','Antioxidant'],['Single','Origin blend'],['Low','Bitterness'],['0','Vegetable fat']]},
+    {e:'🥛',name:'Milk Solids',lead:'Real milk solids for a rounded, velvety body — no cheap fillers.',n:[['Calcium','For bones'],['Vit D','Added'],['Smooth','Texture'],['0','Hydrogenated oil']]},
+    {e:'🌿',name:'Hazelnut',lead:'Aromatic hazelnut that lifts the chocolate into something memorable.',n:[['Fibre','Naturally rich'],['Vit B','Complex'],['Aroma','Signature'],['0','Essence']]},
+    {e:'🍯',name:'Honey',lead:'A touch of real honey instead of refined sugar where it counts.',n:[['Natural','Sweetness'],['Enzymes','Live'],['Subtle','Floral note'],['Less','Refined sugar']]},
+    {e:'🧂',name:'Sea Salt',lead:'A whisper of sea salt to sharpen the sweetness and balance every bite.',n:[['Minerals','Trace'],['Balance','Flavour'],['Pure','Unrefined'],['0','Additives']]}
+  ];
+  const panel=document.getElementById('ingPanel');
+  function render(i){
+    const d=data[i];
+    panel.innerHTML=`<div class="pn-em">${d.e}</div><h3>${d.name}</h3><p class="lead">${d.lead}</p>
+      <div class="nutri">${d.n.map(x=>`<div><div class="n">${x[0]}</div><div class="l">${x[1]}</div></div>`).join('')}</div>`;
+  }
+  document.getElementById('ingList').addEventListener('click',e=>{
+    const p=e.target.closest('.ing-pill');if(!p)return;
+    document.querySelectorAll('.ing-pill').forEach(x=>x.classList.remove('active'));
+    p.classList.add('active');render(+p.dataset.i);
+  });
+  render(0);
+</script>
+</body>
+</html>
